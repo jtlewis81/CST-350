@@ -1,0 +1,54 @@
+﻿@* The button icons are licenced CC0. Source: https://www.kenney.nl/assets/ui-pack *@
+
+@model IEnumerable<ButtonGrid.Models.ButtonModel>
+
+<style>
+    .game-button {
+        width: 85px;
+        border: none;
+    }
+    .game-button-img{
+        width: 70px;
+    }
+    .button-zone{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .line-break{
+        flex-basis: 100%;
+        height: 0;
+    }
+    .button-label{
+        font-size: 8px;
+        text-align: center;
+    }
+</style>
+
+@{
+    string[] imageNames = { "blue-btn.png", "green-btn.png", "red-btn.png", "yellow-btn.png" };
+}
+
+<form>
+    <div class="button-zone">
+
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            @if (@i % 5 == 0)
+            {
+                <div class="line-break"></div>
+            }
+
+            <button class="game-button" type="submit" value="@Model.ElementAt(i).Id" name="buttonNumber" asp-controller="Button" asp-action="HandleButtonClick" >
+                <img class="game-button-img" src="~/img/@imageNames[Model.ElementAt(i).ButtonState]" />
+                <div class="button-label">
+                    @Model.ElementAt(i).Id, @Model.ElementAt(i).ButtonState
+                </div>
+            </button>
+        }
+
+    </div>
+</form>
+
+<br />
+
+<p>@ViewBag.Message</p>
