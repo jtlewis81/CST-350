@@ -11,5 +11,19 @@ namespace Minesweeper.Services
             return securityDAO.FindUserByNameAndPassword(user);
         }
 
+        // Method for finding if the user already exists
+        public bool UserExists(UserModel user)
+        {
+            return securityDAO.FindUserByNameAndEmail(user);
+        }
+        
+        // Method for adding new user
+        public void AddUser(UserModel user)
+        {
+            securityDAO.AddUser(user);
+        }
+
+
+
     }
 }
