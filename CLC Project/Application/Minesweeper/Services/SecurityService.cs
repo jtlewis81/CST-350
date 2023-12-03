@@ -6,9 +6,10 @@ namespace Minesweeper.Services
     {
         SecurityDAO securityDAO = new SecurityDAO();
 
+        // Method for validating a user trying to login
         public bool IsValid(UserModel user)
         {
-            return securityDAO.FindUserByNameAndPassword(user);
+            return securityDAO.FindUserByUsernameAndPassword(user);
         }
 
         // Method for finding if the user already exists

@@ -1,7 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Minesweeper.Models;
 using System.Diagnostics;
-
+/*
+ * CST-350
+ * Home Controller
+ * This is the application's landing page
+ * 
+ */
 namespace Minesweeper.Controllers
 {
     public class HomeController : Controller
@@ -13,9 +18,10 @@ namespace Minesweeper.Controllers
             _logger = logger;
         }
 
+        // home/index view
         public IActionResult Index(UserModel user)
         {
-            Console.WriteLine("Calling Home/Index with username: " + user.UserName);
+            // if a user is logged in they are rerouted to the dashboard
             if (!string.IsNullOrEmpty(user.UserName)) 
             {
                 return RedirectToAction("Index", "Dashboard", user);
@@ -27,11 +33,13 @@ namespace Minesweeper.Controllers
             
         }
 
+        // home/privacy view (privacy policy)
         public IActionResult Privacy()
         {
             return View();
         }
 
+        // home/error view
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

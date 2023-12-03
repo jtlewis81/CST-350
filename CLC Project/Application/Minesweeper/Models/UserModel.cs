@@ -21,6 +21,12 @@ namespace Minesweeper.Models
         [StringLength(20, MinimumLength = 4)]
         public string? LastName { get; set; }
 
+        //User sex
+        [Required]
+        [DisplayName("Sex")]
+        [StringLength(1, MinimumLength = 1, ErrorMessage = "Must select Male or Female")]
+        public string? Sex { get; set; }
+
         //User Age
         [Required]
         [Range(1, 110, ErrorMessage = "Age must be at least 1 and less than 110")]
@@ -62,11 +68,12 @@ namespace Minesweeper.Models
             this.Password = password;
         }
 
-        public UserModel(int id, string? firstName, string? lastName, int age, string? state, string? email, string? userName, string? password)
+        public UserModel(int id, string? firstName, string? lastName, string sex, int age, string? state, string? email, string? userName, string? password)
         {
             Id = id;
             FirstName = firstName;
             LastName = lastName;
+            Sex = sex;
             Age = age;
             State = state;
             Email = email;

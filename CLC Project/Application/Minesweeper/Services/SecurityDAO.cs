@@ -7,7 +7,12 @@ namespace Minesweeper.Services
     {
         const string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Minesweeper;Integrated Security=True;";
 
-        public bool FindUserByNameAndPassword(UserModel user)
+        /// <summary>
+        /// Method for checking if a user with some username && password exists (both must match the same user id)
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public bool FindUserByUsernameAndPassword(UserModel user)
         {
             bool success = false;
 
@@ -83,7 +88,7 @@ namespace Minesweeper.Services
         {
             //bool success = false;
 
-            string sqlStatement = "INSERT INTO dbo.Users (firstname, lastname, age, state, email, username, password) values (@firstname, @lastname, @age, @state, @email, @username, @password)";
+            string sqlStatement = "INSERT INTO dbo.Users (firstname, lastname, sex, age, state, email, username, password) values (@firstname, @lastname, @sex, @age, @state, @email, @username, @password)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -93,6 +98,7 @@ namespace Minesweeper.Services
 
                     command.Parameters.Add("@FIRSTNAME", System.Data.SqlDbType.VarChar, 20).Value = user.FirstName;
                     command.Parameters.Add("@LASTNAME", System.Data.SqlDbType.VarChar, 20).Value = user.LastName;
+                    command.Parameters.Add("@SEX", System.Data.SqlDbType.VarChar, 1).Value = user.Sex;
                     command.Parameters.Add("@AGE", System.Data.SqlDbType.Int).Value = user.Age;
                     command.Parameters.Add("@STATE", System.Data.SqlDbType.VarChar, 2).Value = user.State;
                     command.Parameters.Add("@EMAIL", System.Data.SqlDbType.VarChar, 40).Value = user.Email;

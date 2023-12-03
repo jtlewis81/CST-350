@@ -1,5 +1,9 @@
 ﻿@model Minesweeper.Models.UserModel
 
+@{
+    ViewData["Title"] = "User Login";
+}
+
 <h4 class="text-center">LOGIN</h4>
 <br />
 <div class="row text-center">
@@ -24,7 +28,7 @@
             </div>
         </form>
         <div>
-            <a @*asp-controller="Register" asp-action="Index"*@>Need to Register a New User Account?</a>
+            <a asp-controller="Register" asp-action="Index">Need to Register a New User Account?</a>
         </div>
         @if (@ViewBag.Error != null)
         {
@@ -34,8 +38,6 @@
         }
     </div>
 </div>
-
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

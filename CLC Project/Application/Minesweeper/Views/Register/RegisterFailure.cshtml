@@ -6,6 +6,6 @@
     <p>Either the username: @Model.UserName or the email: @Model.Email already exist. Please try again with differnt username or email</p>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+   <a asp-controller="Home" asp-action="Index">Home</a>
+   <a asp-action="Index">Try Again</a>
 </div>
