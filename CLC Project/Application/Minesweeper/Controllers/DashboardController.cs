@@ -23,12 +23,5 @@ namespace Minesweeper.Controllers
             return RedirectToAction("Index", "Game");
         }
 
-        public IActionResult HandleClick(int row, int col)
-        {
-            // do gameboard logic with passed data
-
-            return View("Game");
-        }
-
     }
 }
