@@ -1,17 +1,3 @@
-
-*.vsidx
-CLC Project/Application/Minesweeper/.vs/Minesweeper/v17/.suo
-CLC Project/Application/Minesweeper/obj/project.nuget.cache
-*.cache
-CLC Project/Application/Minesweeper/obj/project.assets.json
-*.props
-CLC Project/Application/Minesweeper/obj/Minesweeper.csproj.nuget.dgspec.json
-CLC Project/Application/Minesweeper/obj/Debug/net8.0/project.razor.vs.bin
-CLC Project/Application/Minesweeper/obj/Debug/net8.0/Minesweeper.sourcelink.json
-CLC Project/Application/Minesweeper/obj/Debug/net8.0/Minesweeper.GeneratedMSBuildEditorConfig.editorconfig
-CLC Project/Application/Minesweeper/obj/Debug/net8.0/Minesweeper.csproj.CoreCompileInputs.cache
-CLC Project/Application/Minesweeper/obj/Debug/net8.0/Minesweeper.csproj.AssemblyReference.cache
-CLC Project/Application/Minesweeper/obj/Debug/net8.0/Minesweeper.assets.cache
-CLC Project/Application/Minesweeper/obj/Debug/net8.0/Minesweeper.AssemblyInfoInputs.cache
-CLC Project/Application/Minesweeper/obj/Debug/net8.0/Minesweeper.AssemblyInfo.cs
-CLC Project/Application/Minesweeper/.vs/Minesweeper/v17/.suo
+CLC Project/Application/Minesweeper/.vs/
+CLC Project/Application/Minesweeper/obj/
+CLC Project/Application/Minesweeper/bin/
