@@ -9,11 +9,11 @@
 <div style="width: 580px; flex-wrap:wrap;">
     @*<h4>timer will go here?</h4>
     <hr />*@
-    @for (int row = 0; row < @Model.Size; row++)
+    @for (int row = 0; row < @Model.size; row++)
     {
-        for (int col = 0; col < @Model.Size; col++)
+        for (int col = 0; col < @Model.size; col++)
         {
-            <button class="btn btn-primary" type="submit" value="@Model, @Model.Grid[row, col].Row, @Model.Grid[row, col].Col"
+            <button class="btn btn-primary" type="submit" value="@Model, @Model.grid[row, col].row, @Model.grid[row, col].column"
                     name="buttonNumber" asp-controller="Dashboard" asp-action="HandleClick" style="width: 62px; height: 62px; margin:1px 0px;">
 
                 @* <div class="button-label">

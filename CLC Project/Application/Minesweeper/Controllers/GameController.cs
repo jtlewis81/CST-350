@@ -14,7 +14,7 @@ namespace Minesweeper.Controllers
             return View(gameboardModel);
         }
 
-        public IActionResult HandleClick(int row, int col)
+        public IActionResult HandleLeftClick(int row, int col)
         {
             // do gameboard logic with passed data
 
