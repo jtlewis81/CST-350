@@ -19,18 +19,9 @@ namespace Minesweeper.Controllers
         }
 
         // home/index view
-        public IActionResult Index(UserModel user)
+        public IActionResult Index()
         {
-            // if a user is logged in they are rerouted to the dashboard
-            if (!string.IsNullOrEmpty(user.UserName)) 
-            {
-                return RedirectToAction("Index", "Dashboard", user);
-            }
-            else
-            {
-                return View();
-            }
-            
+            return View();
         }
 
         // home/privacy view (privacy policy)
