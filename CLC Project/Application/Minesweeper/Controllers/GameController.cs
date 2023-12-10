@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Minesweeper.Models;
-using NuGet.Protocol.Plugins;
-using System.Drawing;
 
 namespace Minesweeper.Controllers
 {
@@ -20,10 +18,9 @@ namespace Minesweeper.Controllers
             return View("Index", gameBoard);
         }
 
+        // do gameboard logic with passed data
         public IActionResult HandleLeftClick(int row, int col)
         {
-            
-
             // Only can click a cell that is not flagged so no accidents
             if (!gameBoard.grid[row, col].flagged)
             {
@@ -74,10 +71,6 @@ namespace Minesweeper.Controllers
 
                 }
             }
-        
-
-
-            // do gameboard logic with passed data
 
             return View("Index", gameBoard);
         }
