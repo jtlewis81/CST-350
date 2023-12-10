@@ -1,0 +1,23 @@
+﻿@model IEnumerable<ASPCoreFirstApp.Models.ProductModel>
+
+<div class="container d-flex flex-wrap">
+    @foreach (var item in Model)
+    {
+        <div id="prod-card-@item.Id" class="card" style="width: 18rem; margin: 5px;">
+
+            @{
+                var s = item.Name;
+                var firstWord = s.IndexOf(" ") > -1 ? s.Substring(0, s.IndexOf(" ")) : s;
+            }
+
+            <img src="https://loremflickr.com/160/120/@firstWord?lock=@item.Id" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Price)</p>
+                <a href="/products/ShowOneProduct/@item.Id" class="btn btn-primary">Details</a>
+                <a href="/products/ShowEditForm/@item.Id" class="btn btn-warning">Edit</a>
+                <a href="/products/Delete/@item.Id" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    }
+</div>

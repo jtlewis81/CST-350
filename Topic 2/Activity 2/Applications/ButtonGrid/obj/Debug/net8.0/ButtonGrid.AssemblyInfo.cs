@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ButtonGrid")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07a10016f263d582165493902ef2d97a8bebe990")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f323458b44c5145e6ece56392e07d9257bfc2f5d")]
 [assembly: System.Reflection.AssemblyProductAttribute("ButtonGrid")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ButtonGrid")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
