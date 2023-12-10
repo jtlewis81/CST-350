@@ -10,6 +10,8 @@
 		public int liveNeighbors { get; set; } = 0;
 		public bool flagged { get; set; } = false;
 
+		public bool active { get; set; } = true;
+
 		//Default constructor
 
 		public CellModel()
@@ -19,6 +21,8 @@
 			this.visited = false;
 			this.live = false;
 			this.liveNeighbors = 0;
+			this.flagged = false;
+			this.active = true;
 
 		}
 		// Contructor that set up all the values

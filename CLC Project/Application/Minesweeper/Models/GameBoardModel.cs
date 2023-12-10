@@ -24,7 +24,7 @@
 
 
 		//default constructor
-		public GameBoarModel()
+		public GameBoardModel()
 		{
 			this.size = 0;
 			this.bombRatio = 0;
@@ -145,8 +145,9 @@
 			// Mark the current cell as visited
 			grid[row, col].visited = true;
 			grid[row, col].flagged = false;
-			// Iterate through all four possible neighbors
-			for (int i = 0; i < 8; i++)
+			grid[row, col].active = false;
+            // Iterate through all eight possible neighbors
+            for (int i = 0; i < 8; i++)
 			{
 				int newRow = row + dx[i];
 				int newCol = col + dy[i];
@@ -159,13 +160,15 @@
 					{
 						if (grid[newRow, newCol].liveNeighbors == 0)
 						{
-							FloodFill(newRow, newCol);
+                            
+                            FloodFill(newRow, newCol);
 						}
 						// We want the neighbors that have bombs as neightbors to show but we do not want to recusrivly call after that.
 						else if (grid[newRow, newCol].live == false)
 						{
 							grid[newRow, newCol].visited = true;
-						}
+                            grid[newRow, newCol].active = false;
+                        }
 					}
 				}
 			}

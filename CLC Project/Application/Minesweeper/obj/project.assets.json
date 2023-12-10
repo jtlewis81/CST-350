@@ -6944,11 +6944,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\School\\GCU\\CST-350 Projects\\Milestone\\CST_350_Milestone\\CST-350\\CLC Project\\Application\\Minesweeper\\Minesweeper.csproj",
+      "projectUniqueName": "G:\\GCU\\Minesweeper\\Minesweeper.csproj",
       "projectName": "Minesweeper",
-      "projectPath": "D:\\School\\GCU\\CST-350 Projects\\Milestone\\CST_350_Milestone\\CST-350\\CLC Project\\Application\\Minesweeper\\Minesweeper.csproj",
+      "projectPath": "G:\\GCU\\Minesweeper\\Minesweeper.csproj",
       "packagesPath": "C:\\Users\\Dakoda\\.nuget\\packages\\",
-      "outputPath": "D:\\School\\GCU\\CST-350 Projects\\Milestone\\CST_350_Milestone\\CST-350\\CLC Project\\Application\\Minesweeper\\obj\\",
+      "outputPath": "G:\\GCU\\Minesweeper\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dakoda\\AppData\\Roaming\\NuGet\\NuGet.Config",

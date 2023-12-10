@@ -5,22 +5,66 @@
     Game/Index.cshtml
 
 *@
+<style>
+    .game-button {
+        width: 62px;
+        height: 62px;
+        margin: 0px;
+        padding 0;
+        display: inline-block;
+        background-color: #ddd;
+        align-items: center; /* Vertically center content */
+        justify-content: center; /* Horizontally center content */
+    }
 
-<div style="width: 580px; flex-wrap:wrap;">
+    .game-button-image {
+       
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .game-button.inactive {
+        
+        background-color: #696969;
+         cursor: not-allowed;
+         
+        }
+    .game-board {
+        width: 518px;
+        flex-wrap: wrap;
+        display: flex;
+        grid-template-columns: repeat(@Model.size, 1fr);
+    }
+
+
+</style>
+@{
+    // store images in objects for more efficient code
+    string bombImage = "Bomb.png";
+ }
+    <div class="game-board">
     @*<h4>timer will go here?</h4>
     <hr />*@
     @for (int row = 0; row < @Model.size; row++)
     {
         for (int col = 0; col < @Model.size; col++)
         {
-            <button class="btn btn-primary" type="submit" value="@Model, @Model.grid[row, col].row, @Model.grid[row, col].column"
-                    name="buttonNumber" asp-controller="Dashboard" asp-action="HandleClick" style="width: 62px; height: 62px; margin:1px 0px;">
+            <form method="post" asp-controller="Game" asp-action="HandleLeftClick">
+                <input type="hidden" name="row" value="@row" />
+                <input type="hidden" name="col" value="@col" />
 
-                @* <div class="button-label">
-                    @Model.Grid[row, col].Row, @Model.Grid[row, col].Col
-                </div> *@
-
-            </button>
+                <button class="game-button @(Model.grid[row, col].active ? "" : "inactive")" type="submit")>
+                    @if (Model.grid[row, col].live && Model.grid[row, col].visited)
+                    {
+                        <img class="game-button-image" src="~/img/@bombImage" alt="Bomb Image" />
+                    }
+                    <div class="button-label">
+                        @if (!Model.grid[row, col].active)
+                        {
+                            @Model.grid[row, col].liveNeighbors
+                        }
+                    </div>
+                </button>
+            </form>
         }
     }
 </div>

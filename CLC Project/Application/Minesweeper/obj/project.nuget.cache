@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1hUPM9DASzIqYx7r+KoW4GYt/eUw8898vBSm3Px70N7OPobGvTQKHr93Vrs9IUwwy/OhTaUpJgdGhPTUKyGG9g==",
+  "dgSpecHash": "iJOZbL57xA40vG5xSXcJyJPbP6XA6S093LPIQoA44s4pIB6wd47piQ/cvIdzkJjtYOvm0YpR9j/ZgTCTMU6pPQ==",
   "success": true,
-  "projectFilePath": "D:\\School\\GCU\\CST-350 Projects\\Milestone\\CST_350_Milestone\\CST-350\\CLC Project\\Application\\Minesweeper\\Minesweeper.csproj",
+  "projectFilePath": "G:\\GCU\\Minesweeper\\Minesweeper.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dakoda\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Dakoda\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
