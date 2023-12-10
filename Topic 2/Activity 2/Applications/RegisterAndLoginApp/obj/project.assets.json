@@ -6944,11 +6944,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\GitHub\\CST-350\\Topic 2\\Activity 2\\Application\\RegisterAndLoginApp\\RegisterAndLoginApp.csproj",
+      "projectUniqueName": "E:\\GitHub\\CST-350\\Topic 2\\Activity 2\\Applications\\RegisterAndLoginApp\\RegisterAndLoginApp.csproj",
       "projectName": "RegisterAndLoginApp",
-      "projectPath": "E:\\GitHub\\CST-350\\Topic 2\\Activity 2\\Application\\RegisterAndLoginApp\\RegisterAndLoginApp.csproj",
+      "projectPath": "E:\\GitHub\\CST-350\\Topic 2\\Activity 2\\Applications\\RegisterAndLoginApp\\RegisterAndLoginApp.csproj",
       "packagesPath": "C:\\Users\\jtlew\\.nuget\\packages\\",
-      "outputPath": "E:\\GitHub\\CST-350\\Topic 2\\Activity 2\\Application\\RegisterAndLoginApp\\obj\\",
+      "outputPath": "E:\\GitHub\\CST-350\\Topic 2\\Activity 2\\Applications\\RegisterAndLoginApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jtlew\\AppData\\Roaming\\NuGet\\NuGet.Config",

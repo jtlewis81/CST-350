@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GitHub\\CST-350\\Topic 3\\Activity 3\\Applications\\Part 2\\ASPCoreFirstApp\\ASPCoreFirstApp.csproj": {}
+    "E:\\GitHub\\CST-350\\Topic 3\\Activity 3\\Applications\\Parts 2 and 3\\ASPCoreFirstApp\\ASPCoreFirstApp.csproj": {}
   },
   "projects": {
-    "E:\\GitHub\\CST-350\\Topic 3\\Activity 3\\Applications\\Part 2\\ASPCoreFirstApp\\ASPCoreFirstApp.csproj": {
+    "E:\\GitHub\\CST-350\\Topic 3\\Activity 3\\Applications\\Parts 2 and 3\\ASPCoreFirstApp\\ASPCoreFirstApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHub\\CST-350\\Topic 3\\Activity 3\\Applications\\Part 2\\ASPCoreFirstApp\\ASPCoreFirstApp.csproj",
+        "projectUniqueName": "E:\\GitHub\\CST-350\\Topic 3\\Activity 3\\Applications\\Parts 2 and 3\\ASPCoreFirstApp\\ASPCoreFirstApp.csproj",
         "projectName": "ASPCoreFirstApp",
-        "projectPath": "E:\\GitHub\\CST-350\\Topic 3\\Activity 3\\Applications\\Part 2\\ASPCoreFirstApp\\ASPCoreFirstApp.csproj",
+        "projectPath": "E:\\GitHub\\CST-350\\Topic 3\\Activity 3\\Applications\\Parts 2 and 3\\ASPCoreFirstApp\\ASPCoreFirstApp.csproj",
         "packagesPath": "C:\\Users\\jtlew\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHub\\CST-350\\Topic 3\\Activity 3\\Applications\\Part 2\\ASPCoreFirstApp\\obj\\",
+        "outputPath": "E:\\GitHub\\CST-350\\Topic 3\\Activity 3\\Applications\\Parts 2 and 3\\ASPCoreFirstApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jtlew\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MxX5nizMxdF0+IOYobHYx7IpSzK1p+c7kgCSC8bg7vAuwqYIXdpW7aw4769haDAghBlEhdmXqXTMWvrSs5RiVw==",
+  "dgSpecHash": "1GYW2ftwJH9hHBePIojVuBPS8naPalzpUKMpGO6TN2DJFYMGyrHjehBW6HJ3nna0jfJs1nMpjm7RfiOS0RWjPg==",
   "success": true,
-  "projectFilePath": "E:\\GitHub\\CST-350\\Topic 2\\Activity 2\\Application\\ButtonGrid\\ButtonGrid.csproj",
+  "projectFilePath": "E:\\GitHub\\CST-350\\Topic 2\\Activity 2\\Applications\\ButtonGrid\\ButtonGrid.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jtlew\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\jtlew\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

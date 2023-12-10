@@ -1,0 +1,23 @@
+﻿@model Minesweeper.Models.GameBoardModel
+
+<div>
+    @*<h4>timer will go here?</h4>
+    <hr />*@
+    @for (int row = 0; row < @Model.Size; row++)
+    {
+        for (int col = 0; col < @Model.Size; col++)
+        {
+            <button class="btn btn-info" type="submit" value="@Model, @Model.Grid[row, col].Row, @Model.Grid[row, col].Col"
+                    name="buttonNumber" asp-controller="Dashboard" asp-action="HandleClick">
+
+                <div class="button-label">
+                    @Model.Grid[row, col].Row, @Model.Grid[row, col].Col
+                </div>
+
+            </button>
+        }
+    }
+</div>
+<div>
+    <a class=btn btn-danger" asp-action="Index" asp-controller="DashBoard">Quit</a>
+</div>
