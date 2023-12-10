@@ -18,12 +18,9 @@ namespace Minesweeper.Controllers
             return View(user);
         }
 
-        public IActionResult Game(GameBoardModel gameBoard)
+        public IActionResult NewGame()
         {
-            // instantiate a new gameboard in the game logic service
-            gameBoard = new GameBoardModel(boardSize);
-
-            return View(gameBoard);
+            return RedirectToAction("Index", "Game");
         }
 
         public IActionResult HandleClick(int row, int col)
