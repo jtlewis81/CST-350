@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\GCU\\Minesweeper\\Minesweeper.csproj": {}
+    "D:\\School\\GCU\\CST-350 Projects\\Milestone\\CST_350_Milestone\\CST-350\\CLC Project\\Application\\Minesweeper\\Minesweeper.csproj": {}
   },
   "projects": {
-    "G:\\GCU\\Minesweeper\\Minesweeper.csproj": {
+    "D:\\School\\GCU\\CST-350 Projects\\Milestone\\CST_350_Milestone\\CST-350\\CLC Project\\Application\\Minesweeper\\Minesweeper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\GCU\\Minesweeper\\Minesweeper.csproj",
+        "projectUniqueName": "D:\\School\\GCU\\CST-350 Projects\\Milestone\\CST_350_Milestone\\CST-350\\CLC Project\\Application\\Minesweeper\\Minesweeper.csproj",
         "projectName": "Minesweeper",
-        "projectPath": "G:\\GCU\\Minesweeper\\Minesweeper.csproj",
+        "projectPath": "D:\\School\\GCU\\CST-350 Projects\\Milestone\\CST_350_Milestone\\CST-350\\CLC Project\\Application\\Minesweeper\\Minesweeper.csproj",
         "packagesPath": "C:\\Users\\Dakoda\\.nuget\\packages\\",
-        "outputPath": "G:\\GCU\\Minesweeper\\obj\\",
+        "outputPath": "D:\\School\\GCU\\CST-350 Projects\\Milestone\\CST_350_Milestone\\CST-350\\CLC Project\\Application\\Minesweeper\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dakoda\\AppData\\Roaming\\NuGet\\NuGet.Config",
