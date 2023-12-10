@@ -10,8 +10,12 @@
             private set { }
         }
 
-        // Constructor initializes a grid of cells, assigning their row and col property values. 
-        public GameBoardModel(int size)
+		public GameBoardModel()
+		{
+		}
+
+		// Constructor initializes a grid of cells, assigning their row and col property values. 
+		public GameBoardModel(int size)
         {
             Size = size;
             Grid = new CellModel[size, size];
