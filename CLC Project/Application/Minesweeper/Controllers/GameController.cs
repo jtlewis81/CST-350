@@ -8,6 +8,7 @@ namespace Minesweeper.Controllers
     public class GameController : Controller
     {
         static GameBoardModel gameBoard;
+        // hard coded for now but will be dtiremented by the difficulty chosen
         int gameBoardSize = 8;
         double bombRatio = 0.10;
 
@@ -36,7 +37,6 @@ namespace Minesweeper.Controllers
                 }
                 // sets visited to true
                 gameBoard.grid[row, col].visited = true;
-                //gameBoard.grid[row, col].active = false;
 
                 // logic for the flood fill. Only occurs on cells with a 0 neightbor count
                 if (gameBoard.grid[row, col].liveNeighbors == 0)
@@ -44,27 +44,7 @@ namespace Minesweeper.Controllers
                     gameBoard.grid[row, col].active = false;
                     // run flood fill method
                     gameBoard.FloodFill(row, col);
-                    // display the changes in on the screen 
-                    /* un needed sinc it going to send updated game board
-                    for (int row = 0; row < gameBoard.size; row++)
-                    {
-                        for (int col = 0; col < gameBoard.size; col++)
-                        {
-                            if (gameBoard.grid[row, col].visited && !gameBoard.grid[row, col].live)
-                            {
-                                btnGrid[row, col].BackColor = Color.DarkGray;
-                                btnGrid[row, col].Enabled = false;
-                                btnGrid[row, col].BackgroundImage = null;
-                                // dsiplays neightbor count if no live nieghbors
-                                if (gameBoard.grid[row, col].liveNeighbors != 0)
-                                {
-                                    btnGrid[row, col].Text = gameBoard.grid[row, col].liveNeighbors.ToString();
-                                }
-                            }
-                        }
-                    }*/
-                    // change color of button
-                    //(sender as Button).BackColor = Color.DarkGray;
+                    
 
                 }
                 else if (gameBoard.grid[row, col].live == true)
@@ -79,7 +59,6 @@ namespace Minesweeper.Controllers
                             if (gameBoard.grid[r, c].live)
                             {
                                 gameBoard.grid[r, c].visited = true;
-                                //btnGrid[row, col].BackgroundImage = bitBomb;
 
                             }
                         }
@@ -90,9 +69,6 @@ namespace Minesweeper.Controllers
                 // shows neightbor count and changes color and disenables it and sets flagged to false
                 else
                 {
-                    //(sender as Button).Text = gameBoard.grid[r, c].liveNeighbors.ToString();
-                    //(sender as Button).BackColor = Color.DarkGray;
-                    //(sender as Button).Enabled = false;
                     gameBoard.grid[row, col].flagged = false;
                     gameBoard.grid[row, col].active = false;
 
