@@ -1,0 +1,16 @@
+﻿@model Minesweeper.Models.UserModel
+
+@{
+    ViewData["Title"] = "User Dashboard";
+}
+
+<div>
+    <h5>Welcome @Model.UserName!</h5> 
+</div>
+<div class="text-center">
+    <h4>DASHBOARD</h4>
+</div>
+<div class="text-center">
+    <a  class="btn btn-success" asp-action="Index" asp-controller="Game" style="margin-top: 50px; width:100px;">PLAY</a>
+</div>
+
