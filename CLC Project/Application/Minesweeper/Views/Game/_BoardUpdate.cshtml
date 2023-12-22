@@ -1,0 +1,45 @@
+﻿@model Minesweeper.Models.GameBoardModel
+
+@{
+    // store images in variables for more efficient code
+    string bombImage = "Bomb.png";
+    string flagImage = "Flag.png";
+}
+<div class="game-board" id="gameBoardContainer">
+
+
+    @* create the rows and columns to use for the gameboard *@
+    @for (int row = 0; row < @Model.size; row++)
+    {
+        for (int col = 0; col < @Model.size; col++)
+        {
+            //Using a form to send the col and row to the method
+            <form method="post" asp-controller="Game" asp-action="HandleClick">
+                <input type="hidden" name="row" value="@row" />
+                <input type="hidden" name="col" value="@col" />
+                @* if the button has been clicked active will be false so this will change the button look *@
+                <button class="game-button @(Model.grid[row, col].active ? "" : "inactive")" type="submit" )>
+
+                    @if (Model.grid[row, col].live && Model.grid[row, col].visited)
+                    { 
+                        <img class="game-button-image" src="~/img/@bombImage" alt="Bomb Image" /> 
+                    }
+                    @if (Model.grid[row, col].flagged && !Model.grid[row, col].visited)
+                    {
+                        <img class="game-button-image" src="~/img/@flagImage" alt="Bomb Image" />
+                    }
+
+                    @* Label for the buttons when they have been click the live neightbors will show. *@
+                    <div class="button-label">
+                        @if (!Model.grid[row, col].live && Model.grid[row, col].visited)
+                        {
+                            @Model.grid[row, col].liveNeighbors;
+
+                            
+                        }
+                    </div>
+                </button>
+            </form>
+        }
+    }
+</div>

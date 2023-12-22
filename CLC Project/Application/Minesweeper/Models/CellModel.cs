@@ -9,6 +9,7 @@
 		public bool live { get; set; } = false;
 		public int liveNeighbors { get; set; } = 0;
 		public bool flagged { get; set; } = false;
+		public string image { get; set; } = "";
 
 		public bool active { get; set; } = true;
 
@@ -23,7 +24,7 @@
 			this.liveNeighbors = 0;
 			this.flagged = false;
 			this.active = true;
-
+			this.image = "";
 		}
 		// Contructor that set up all the values
 		public CellModel(int row, int column, bool visited, bool live, int liveNeighbors)
