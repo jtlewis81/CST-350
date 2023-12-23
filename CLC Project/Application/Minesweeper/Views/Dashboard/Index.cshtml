@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "User Dashboard";
+    string bombImage = "Bomb.png";
 }
 
 <div>
@@ -10,7 +11,23 @@
 <div class="text-center">
     <h4>DASHBOARD</h4>
 </div>
-<div class="text-center">
-    <a  class="btn btn-success" asp-action="Index" asp-controller="Game" style="margin-top: 50px; width:100px;">PLAY</a>
+
+
+<div id="gameCard1" class="card">
+        
+    <div class="card-body">
+        <h5 class="card-title">Play Minesweeper</h5>
+        <img src="~/img/@bombImage" class="card-img-top" />
+
+        @* Add Difficulty Setting (radio buttons) HERE! *@
+
+        <button class="btn btn-success game-start-button">PLAY</button>
+        <button class="btn btn-danger quit-game-btn">QUIT</button>
+    </div>
 </div>
 
+
+@* GameBoard goes here *@
+<div id="game">
+
+</div>
