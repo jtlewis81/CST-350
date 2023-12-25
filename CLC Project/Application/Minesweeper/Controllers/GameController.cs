@@ -12,9 +12,10 @@ namespace Minesweeper.Controllers
         // hard coded for now but will be determined by the difficulty chosen
         int gameBoardSize = 8;
         // the GameboardModel class has an array of doubles called Difficulty,
-        // so wwe only need to pass an int once we implement the game settings feature
+        // so we only need to pass an int once we implement the game settings feature
         double bombRatio = 0.10;
 
+        // GET /Game/
         public IActionResult Index()
         {
             gameBoard = new GameBoardModel(gameBoardSize, bombRatio);
@@ -22,6 +23,17 @@ namespace Minesweeper.Controllers
             // add method to the GameLogicService to start the timer (it might need to run in a separate partial view?)
             return PartialView("_Minesweeper", gameBoard);
         }
+
+        /// <summary>
+        /// 
+        /// HandleLeftClick and HandleRightClick actions passes current gameBoard data to the GameLogicService
+        /// passes the updated gameBoard, returned from the GameLogicService, to the partial View
+        /// game over conditions are checked and ViewBag.Message is updated appropriately.
+        /// 
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        /// <returns></returns>
 
         public IActionResult HandleLeftClick(int row, int col)
         {

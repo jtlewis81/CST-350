@@ -1,9 +1,11 @@
 ﻿$(function () {
 
+    // prevent righ-click context menu
     $(document).bind("contextmenu", function (e) {
         e.preventDefault();
     });
 
+    // loads a new game in the dashboard
     $(".game-start-button").click(function (event) {
         event.preventDefault();
 
@@ -19,11 +21,13 @@
         });
     });
 
+    // closes an open game
     $(".quit-game-btn").click(function (event) {
         event.preventDefault();
         $('#game').empty();
     });
 
+    // handle left/right/center mouse clicks
     $(document).on("mousedown", ".game-button", function (event) {
         var cellRow = $(this).closest("form").find('input[name="row"]').val();
         var cellCol = $(this).closest("form").find('input[name="col"]').val();
@@ -42,7 +46,7 @@
         }
     });
 
-    // updates the button
+    // update the specified cell
     function doCellUpdate(row, col, urlString) {
 
         $.ajax({

@@ -43,7 +43,7 @@ body {
 }
 
 .game-board {
-    /* This will be edited later tyo get bigger when the difficulty has been changed*/
+    /* This will be edited later to get bigger when the difficulty has been changed*/
     width: 518px;
     flex-wrap: wrap;
     display: flex;

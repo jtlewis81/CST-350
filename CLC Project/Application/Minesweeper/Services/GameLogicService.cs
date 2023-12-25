@@ -4,14 +4,24 @@ namespace Minesweeper.Services
 {
     public class GameLogicService
     {
+        /// <summary>
+        /// 
+        /// This service class contains all of the methods that used to be in the GameBoardModel
+        /// and contains methods for the Controllers to call for handling game interactions (user input)
+        /// 
+        /// </summary>
+
+
+        // default constructor
         public GameLogicService()
         {
 
         }
 
-        // public property for lose condition (is set to true if a live cell is left clicked)
+        // check for lose condition (returns true if a live cell has been visited (left-clicked))
         public bool GameOverLose(GameBoardModel gameBoard)
         {
+            // loop through all cells, looking for any live cell that has been visited
             foreach (CellModel cell in gameBoard.Grid)
             {
                 if (cell.Live && cell.Visited)
@@ -23,13 +33,13 @@ namespace Minesweeper.Services
             return false;
         }
 
-        // method for checking if the player has cleared all non-live cells on the board
+        // check if the player has cleared all non-live cells on the board
         public bool GameOverWin(GameBoardModel gameBoard)
         {
             return gameBoard.NonLiveCells == getNumberOfVistedCells(gameBoard);
         }
 
-        // helper method for counting visited cells
+        // count visited cells
         private int getNumberOfVistedCells(GameBoardModel gameBoard)
         {
             int visitedCells = 0;
@@ -40,6 +50,7 @@ namespace Minesweeper.Services
             return visitedCells;
         }
 
+        // sets up the passed in GameBoardModel with live cells and live neighbor counts
         public GameBoardModel Setup(GameBoardModel gameBoard)
         {
             gameBoard = SetupLiveNeighbors(gameBoard);
@@ -169,13 +180,14 @@ namespace Minesweeper.Services
             // Only can click a cell that is not Flagged so no accidents
             if (!gameBoard.Grid[row, col].Flagged && !GameOverLose(gameBoard) && !GameOverWin(gameBoard))
             {
-                // first click so it moves if bomb also starts timer
+                // first click so it moves if bomb also starts timer - not implemented
                 if (gameBoard.FirstClick)
                 {
                     //FirstClick(r,c);
                     //watch.Start();
                     //gameBoard.FirstClick = false;
                 }
+
                 // sets Visited to true
                 gameBoard.Grid[row, col].Visited = true;
 
@@ -213,6 +225,8 @@ namespace Minesweeper.Services
             return gameBoard;
         }
 
+        // sets/removes a flag from a cell
+        // a flag diables left-clicking on the cell
         public GameBoardModel RightClick(GameBoardModel gameBoard, int row, int col)
         {
             if (!GameOverLose(gameBoard))
