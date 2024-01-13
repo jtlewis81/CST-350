@@ -7,6 +7,7 @@ namespace Minesweeper.Services
     {
         const string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Minesweeper;Integrated Security=True;";
 
+        // add a saved game and return a success/fail result
         public bool AddSavedGame(SaveGameModel savedGame)
         {
             bool success = false;
@@ -23,14 +24,14 @@ namespace Minesweeper.Services
                     command.Parameters.AddWithValue("@USERNAME", savedGame.UserId);
                     command.Parameters.AddWithValue("@DATE", savedGame.Date);
                     command.Parameters.AddWithValue("@STATE", savedGame.State);
-                   
+
                     connection.Open();
 
                     if (command.ExecuteNonQuery() > 0)
                     {
                         success = true;
                     }
-                 
+
                 }
                 catch (Exception ex)
                 {
@@ -41,6 +42,7 @@ namespace Minesweeper.Services
             return success;
         }
 
+        // delete a saved game and return a success/fail result
         public bool DeleteSavedGame(int saveGameId)
         {
             bool success = false;
@@ -71,6 +73,7 @@ namespace Minesweeper.Services
             return success;
         }
 
+        // returns the saved game data for a specified record (by id)
         public SaveGameModel GetSavedGameById(int saveGameId)
         {
             SaveGameModel game = new SaveGameModel();
@@ -102,6 +105,7 @@ namespace Minesweeper.Services
             return game;
         }
 
+        // returns a list of saved games for a apecific user (by userid)
         public List<SaveGameModel> GetSavedGamesListByUserId(int userId)
         {
             List<SaveGameModel> gameList = new List<SaveGameModel>();
@@ -122,6 +126,36 @@ namespace Minesweeper.Services
                     while (reader.Read())
                     {
                         gameList.Add(new SaveGameModel((int)reader[0], (int)reader[1], (DateTime)reader[2], (string)reader[3]));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return gameList;
+        }
+
+        // returns a list of all saved games in the database without user ids
+        // this is used by the API only, not the Service class
+        public List<SaveGameModel> GetAllSavedGames()
+        {
+            List<SaveGameModel> gameList = new List<SaveGameModel>();
+
+            string sqlStatement = "SELECT * FROM dbo.Saves";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        gameList.Add(new SaveGameModel((int)reader[0], -1, (DateTime)reader[2], (string)reader[3]));
                     }
                 }
                 catch (Exception ex)

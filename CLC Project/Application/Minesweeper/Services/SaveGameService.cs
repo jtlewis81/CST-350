@@ -27,7 +27,7 @@ namespace Minesweeper.Services
 
         // Helper Methods
 
-        public bool DeleteGame(int  saveGameId)
+        public bool DeleteGame(int saveGameId)
         {
             return saveGameDAO.DeleteSavedGame(saveGameId);
         }
@@ -49,12 +49,12 @@ namespace Minesweeper.Services
             {
                 for (int c = 0; c < gameBoard.Size; c++)
                 {
-                    state += gameBoard.Grid[r,c].Row.ToString() + ",";
-                    state += gameBoard.Grid[r,c].Column.ToString() + ",";
-                    state += gameBoard.Grid[r,c].Visited.ToString() + ",";
-                    state += gameBoard.Grid[r,c].Live.ToString() + ",";
-                    state += gameBoard.Grid[r,c].LiveNeighbors.ToString() + ",";
-                    state += gameBoard.Grid[r,c].Flagged.ToString() + ",";
+                    state += gameBoard.Grid[r, c].Row.ToString() + ",";
+                    state += gameBoard.Grid[r, c].Column.ToString() + ",";
+                    state += gameBoard.Grid[r, c].Visited.ToString() + ",";
+                    state += gameBoard.Grid[r, c].Live.ToString() + ",";
+                    state += gameBoard.Grid[r, c].LiveNeighbors.ToString() + ",";
+                    state += gameBoard.Grid[r, c].Flagged.ToString() + ",";
 
                     // do not add separator after last cell
                     if (!(r < gameBoard.Size - 1 && c < gameBoard.Size - 1))
@@ -94,13 +94,13 @@ namespace Minesweeper.Services
                     // get the array of cell details
                     string[] cellDetails = gameDetails[gameDetailsIndex].Split(",");
 
-                    gameBoard.Grid[r,c].Row = int.Parse(cellDetails[0]);
-                    gameBoard.Grid[r,c].Column = int.Parse(cellDetails[0]);
-                    gameBoard.Grid[r,c].Visited = bool.Parse(cellDetails[0]);
-                    gameBoard.Grid[r,c].Live = bool.Parse(cellDetails[0]);
-                    gameBoard.Grid[r,c].LiveNeighbors = int.Parse(cellDetails[0]);
-                    gameBoard.Grid[r,c].Flagged = bool.Parse(cellDetails[0]);
-                    
+                    gameBoard.Grid[r, c].Row = int.Parse(cellDetails[0]);
+                    gameBoard.Grid[r, c].Column = int.Parse(cellDetails[0]);
+                    gameBoard.Grid[r, c].Visited = bool.Parse(cellDetails[0]);
+                    gameBoard.Grid[r, c].Live = bool.Parse(cellDetails[0]);
+                    gameBoard.Grid[r, c].LiveNeighbors = int.Parse(cellDetails[0]);
+                    gameBoard.Grid[r, c].Flagged = bool.Parse(cellDetails[0]);
+
                     // increment through gameDetails unless this is the last index, which will also be the last cell in gameBoard.Grid
                     if (gameDetailsIndex < gameDetails.Length - 1)
                     {
