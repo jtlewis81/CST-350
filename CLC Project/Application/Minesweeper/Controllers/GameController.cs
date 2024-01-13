@@ -4,8 +4,15 @@ using Minesweeper.Services;
 
 namespace Minesweeper.Controllers
 {
+    /// <summary>
+    ///
+    ///     This updates the partial view for the game within the logged in user's Dashboard page
+    /// 
+    /// </summary>
+    
     public class GameController : Controller
     {
+
         static GameBoardModel gameBoard;
         GameLogicService gameLogic = new GameLogicService();
 

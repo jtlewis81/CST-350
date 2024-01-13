@@ -9,7 +9,6 @@
         public bool Live { get; set; } = false;
         public int LiveNeighbors { get; set; } = 0;
         public bool Flagged { get; set; } = false;
-        public string Image { get; set; } = "";
 
         //Default constructor
         public CellModel() { }

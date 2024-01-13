@@ -105,8 +105,6 @@ namespace Minesweeper.Services
                     command.Parameters.Add("@USERNAME", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
                     command.Parameters.Add("@PASSWORD", System.Data.SqlDbType.VarChar, 40).Value = user.Password;
                 
-
-                
                     connection.Open();
                     //SqlDataReader reader = command.ExecuteReader();
                     command.ExecuteNonQuery();
