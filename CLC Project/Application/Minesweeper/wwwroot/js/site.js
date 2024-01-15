@@ -57,7 +57,7 @@
 
         $.ajax({
             url: '/Game/DeleteGame', // Update the URL to include the gameId
-            type: 'POST',
+            type: 'DELETE',
             data: { gameId: id},
             success: function (data) {
                 console.log('Game deleted successfully.');
@@ -78,7 +78,7 @@
 
         $.ajax({
             url: '/Game/LoadGame/', // Add a trailing slash here
-            type: 'POST',
+            type: 'GET',
             data: { gameId: id },
             success: function (data) {
                 console.log('Game loaded successfully.');
