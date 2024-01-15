@@ -82,7 +82,7 @@ namespace Minesweeper.Services
             gameBoard.LiveCells = int.Parse(gameDetails[3]);
             gameBoard.NonLiveCells = int.Parse(gameDetails[4]);
             gameBoard.FirstClick = bool.Parse(gameDetails[5]);
-
+            gameBoard.Grid = new CellModel[gameBoard.Size, gameBoard.Size];
             // used to increment through gameDetails for the cells
             int gameDetailsIndex = 6;
 
@@ -91,15 +91,18 @@ namespace Minesweeper.Services
             {
                 for (int c = 0; c < gameBoard.Size; c++)
                 {
+                    // initialize CellModel before assigning values
+                    gameBoard.Grid[r, c] = new CellModel();
+
                     // get the array of cell details
                     string[] cellDetails = gameDetails[gameDetailsIndex].Split(",");
 
                     gameBoard.Grid[r, c].Row = int.Parse(cellDetails[0]);
-                    gameBoard.Grid[r, c].Column = int.Parse(cellDetails[0]);
-                    gameBoard.Grid[r, c].Visited = bool.Parse(cellDetails[0]);
-                    gameBoard.Grid[r, c].Live = bool.Parse(cellDetails[0]);
-                    gameBoard.Grid[r, c].LiveNeighbors = int.Parse(cellDetails[0]);
-                    gameBoard.Grid[r, c].Flagged = bool.Parse(cellDetails[0]);
+                    gameBoard.Grid[r, c].Column = int.Parse(cellDetails[1]);
+                    gameBoard.Grid[r, c].Visited = bool.Parse(cellDetails[2]);
+                    gameBoard.Grid[r, c].Live = bool.Parse(cellDetails[3]);
+                    gameBoard.Grid[r, c].LiveNeighbors = int.Parse(cellDetails[4]);
+                    gameBoard.Grid[r, c].Flagged = bool.Parse(cellDetails[5]);
 
                     // increment through gameDetails unless this is the last index, which will also be the last cell in gameBoard.Grid
                     if (gameDetailsIndex < gameDetails.Length - 1)
