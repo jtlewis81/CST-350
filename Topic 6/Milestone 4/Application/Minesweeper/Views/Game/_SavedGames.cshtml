@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Minesweeper.Models.SaveGameModel>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+
+            <td>
+
+                    <button class="btn btn-success game-load-button" data-game-id="@item.Id">LOAD</button>
+                    <button class="btn btn-danger game-delete-button" data-game-id="@item.Id">DELETE</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
