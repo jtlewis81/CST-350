@@ -90,34 +90,6 @@
             }
         });
     };
-    function collectGameBoardData() {
-        var gameBoardData = {};
-
-        // Collect game board properties
-        gameBoardData.Size = $('#gameBoardSize').val();
-        gameBoardData.BombRatio = $('#gameBoardBombRatio').val();
-        gameBoardData.TotalCells = $('#gameBoardTotalCells').val();
-        gameBoardData.LiveCells = $('#gameBoardLiveCells').val();
-        gameBoardData.NonLiveCells = $('#gameBoardNonLiveCells').val();
-        gameBoardData.FirstClick = $('#gameBoardFirstClick').val();
-
-        // Collect grid data
-        gameBoardData.Grid = [];
-
-        $(".game-button").each(function () {
-            var cellRow = $(this).closest("form").find('input[name="row"]').val();
-            var cellCol = $(this).closest("form").find('input[name="col"]').val();
-
-            var cellData = {
-                Row: cellRow,
-                Column: cellCol,
-                // ... collect other cell properties based on your model ...
-            };
-
-            gameBoardData.Grid.push(cellData);
-        });
-
-        return gameBoardData;
-    }
+   
     
 });

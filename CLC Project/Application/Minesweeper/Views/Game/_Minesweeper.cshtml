@@ -30,15 +30,15 @@
 
 <form asp-action="SaveGame" method="post">
     @* @Html.Serialize("gameBoard", Model) *@
-    <input type="hidden" name="Size" value="@Model.Size" />
+@*     <input type="hidden" name="Size" value="@Model.Size" />
     <input type="hidden" name="BombRatio" value="@Model.BombRatio" />
     <input type="hidden" name="TotalCells" value="@Model.TotalCells" />
     <input type="hidden" name="LiveCells" value="@Model.LiveCells" />
     <input type="hidden" name="NonLiveCells" value="@Model.NonLiveCells" />
-    <input type="hidden" name="FirstClick" value="@Model.FirstClick" />
+    <input type="hidden" name="FirstClick" value="@Model.FirstClick" /> *@
 
     @* Individual hidden fields for each property in the Grid array *@
-    @for (int row = 0; row < Model.Size; row++)
+@*     @for (int row = 0; row < Model.Size; row++)
     {
         for (int col = 0; col < Model.Size; col++)
         {
@@ -49,7 +49,7 @@
             <input type="hidden" name="Grid[@row][@col].LiveNeighbors" value="@Model.Grid[row, col].LiveNeighbors" />
             <input type="hidden" name="Grid[@row][@col].Flagged" value="@Model.Grid[row, col].Flagged" />
         }
-    }
+    } *@
  
     <div>
         <button class="btn btn-info save-game-btn" type="submit">SAVE</button>
