@@ -32,28 +32,63 @@
         $('#game').empty();
     });
 
-    // //saves the current game 
-    //$(document).on("click", ".save-game-btn", function (event) {
-    //    event.preventDefault();
-    //    console.log('Save button clicked');
-    //    // Collect game board data
-    //    var gameBoardData = collectGameBoardData();
+    // open saved games in partial view
+    $(".game-saves-button").click(function (event) {
+        event.preventDefault();
 
-    //    // Your AJAX request to save the game
-    //    $.ajax({
-    //        datatype: 'json', // Change to 'json'
-    //        contentType: 'application/json', // Set content type to JSON
-    //        method: 'POST',
-    //        url: '/Game/SaveGame',
-    //        data: JSON.stringify(gameBoardData), // Convert the data to JSON string
-    //        success: function (data) {
-    //            console.log('Game Saved');
-    //            console.log(data);
-    //            // Handle the response as needed
-    //        }
-    //    });
-    //});
+        $.ajax({
+            datatype: 'html',
+            method: 'POST',
+            url: '/Game/SavedGames',
 
+            success: function (data) {
+                console.log(data);
+                $('#game').html(data);
+            }
+        });
+    });
+
+    // delete game button
+
+    $(document).on("click", ".game-delete-button", function (event) {
+        event.preventDefault();
+        var id = $(this).data("game-id");
+        console.log('gameId:', id);
+
+        $.ajax({
+            url: '/Game/DeleteGame', // Update the URL to include the gameId
+            type: 'DELETE',
+            data: { gameId: id},
+            success: function (data) {
+                console.log('Game deleted successfully.');
+                $('#game').html(data);
+            },
+            error: function (error) {
+                console.error('Error deleting game:', error);
+            }
+        });
+    });
+
+    // Load game button
+
+    $(document).on("click", ".game-load-button", function (event) {
+        event.preventDefault();
+        var id = $(this).data("game-id");
+        console.log('gameId:', id);
+
+        $.ajax({
+            url: '/Game/LoadGame/', // Add a trailing slash here
+            type: 'GET',
+            data: { gameId: id },
+            success: function (data) {
+                console.log('Game loaded successfully.');
+                $('#game').html(data);
+            },
+            error: function (error) {
+                console.error('Error loading game:', error);
+            }
+        });
+    });
 
     // handle left/right/center mouse clicks
     $(document).on("mousedown", ".game-button", function (event) {

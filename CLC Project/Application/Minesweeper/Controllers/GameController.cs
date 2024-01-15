@@ -11,7 +11,7 @@ namespace Minesweeper.Controllers
     ///     This updates the partial view for the game within the logged in user's Dashboard page
     /// 
     /// </summary>
-    
+
     public class GameController : Controller
     {
 
@@ -80,7 +80,7 @@ namespace Minesweeper.Controllers
         [HttpPost]
         public IActionResult SaveGame()
         {
-            
+
             //GameBoardModel gameBoard = JsonConvert.DeserializeObject<GameBoardModel>(gameBoardData);
             SecurityService securityService = new SecurityService();
             SaveGameService saveGame = new SaveGameService();
@@ -95,13 +95,46 @@ namespace Minesweeper.Controllers
 
 
 
+        // saved games button
+        public IActionResult SavedGames()
+        {
+            SaveGameService savedGameServices = new SaveGameService();
+            int userId = Int32.Parse(HttpContext.Session.GetString("userId"));
+            List<SaveGameModel> savedGames = savedGameServices.GetSavesByUserId(userId);
+
+            return PartialView("_SavedGames", savedGames);
+        }
 
 
+        public IActionResult LoadGame()
+        {
 
 
+            return PartialView("_Minesweeper", gameBoard);
+        }
+
+        [HttpDelete]
+        public IActionResult DeleteGame(int gameId)
+        {
+            SaveGameService savedGameServices = new SaveGameService();
+            savedGameServices.DeleteGame(gameId);
+            int userId = Int32.Parse(HttpContext.Session.GetString("userId"));
+            List<SaveGameModel> savedGames = savedGameServices.GetSavesByUserId(userId);
+
+            return PartialView("_SavedGames", savedGames);
+        }
+        [HttpGet]
+        public IActionResult LoadGame(int gameId)
+        {
+            Console.Out.WriteLine(gameId);
+            SaveGameService savedGameServices = new SaveGameService();
+            gameBoard = savedGameServices.LoadGame(gameId);
 
 
+            return PartialView("_Minesweeper", gameBoard);
 
+
+        }
 
     }
 }
