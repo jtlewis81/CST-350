@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "User Dashboard";
+
+    @* Image(s) for card(s) - Will need handled differently if the application is scaled with too many more games, i.e. SQL database records *@
+    string bombImage = "Bomb.png";
+}
+
+<div>
+    <h5>Welcome @Model.UserName!</h5> 
+</div>
+<div class="text-center">
+    <h4>DASHBOARD</h4>
+</div>
+
+@*
+    Cards can be used to expand on the project, allowing the user to launch any number of games on the dashboard.
+    The id can be handled dynamically, allowing for a specific game to be loaded.
+*@
+<div id="gameCard1" class="card">
+        
+    <div class="card-body">
+        <h5 class="card-title">Play Minesweeper</h5>
+        <img src="~/img/@bombImage" class="card-img-top" alt-text="minesweeper"/>
+
+        @* Add Difficulty Setting (radio buttons) HERE! *@
+
+        <button class="btn btn-success game-start-button">PLAY</button>
+        <button class="btn btn-danger quit-game-btn">QUIT</button>
+    </div>
+</div>
+
+
+@* GameBoard goes here as partial view *@
+<div id="game">
+
+</div>
