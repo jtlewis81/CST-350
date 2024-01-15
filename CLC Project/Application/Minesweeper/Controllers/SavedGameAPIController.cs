@@ -28,7 +28,7 @@ namespace Minesweeper.Controllers
         // returns saved game data for one specified game
         [HttpGet("showSavedGame/{id}")]
         [ResponseType(typeof(List<SaveGameModel>))]
-        public SaveGameModel ShowSavedGameById(int id)
+        public SaveGameModel ShowOneGameById(int id)
         {
             return repository.GetSavedGameById(id);
         }
@@ -36,7 +36,7 @@ namespace Minesweeper.Controllers
         // deletes the specified game and returns the updated list of all saved games
         [HttpDelete("deleteOneGame/{id}")]
         [ResponseType(typeof(List<SaveGameModel>))]
-        public IEnumerable<SaveGameModel> DeleteGameById(int id)
+        public IEnumerable<SaveGameModel> DeleteOneGameById(int id)
         {
             repository.DeleteSavedGame(id);
             return repository.GetAllSavedGames();
