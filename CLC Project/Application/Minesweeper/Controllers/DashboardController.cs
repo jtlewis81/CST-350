@@ -12,16 +12,22 @@ namespace Minesweeper.Controllers
     public class DashboardController : Controller
     {
         // dashboard/index view
+        //[HttpPost]
         public IActionResult Index(UserModel user)
         {
+            
             SecurityService securityService = new SecurityService();
 
             if (securityService.IsValid(user))
             {
+                //user.Id = securityService.GetUserId(user);
+                //HttpContext.Session.SetString("userId", user.Id.ToString());
+                //UserModel foundUser = securityService.GetUser(user.Id);
                 return View(user);
             }
             else
             {
+                HttpContext.Session.Remove("userId");
                 return RedirectToAction("Index", "Home");
             }
         }

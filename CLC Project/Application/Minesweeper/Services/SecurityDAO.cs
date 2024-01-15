@@ -119,7 +119,96 @@ namespace Minesweeper.Services
         }
 
 
+        public int GetUserId(UserModel user)
+        {
+            int userId = -1;
 
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE username = @username and password = @password";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+                command.Parameters.Add("@USERNAME", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
+                command.Parameters.Add("@PASSWORD", System.Data.SqlDbType.VarChar, 40).Value = user.Password;
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read(); // Move to the first (and only) row
+
+                        // Assuming UserId is an integer, adjust the column name accordingly
+                        userId = reader.GetInt32(reader.GetOrdinal("ID"));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return userId;
+        }
+
+        public UserModel FindUserById(int userId)
+        {
+            UserModel resultUser = null;
+
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE ID = @userId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+                command.Parameters.Add("@userId", System.Data.SqlDbType.Int).Value = userId;
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read(); // Move to the first (and only) row
+
+                        // Assuming UserId is an integer, adjust the column name accordingly
+                        int id = reader.GetInt32(reader.GetOrdinal("ID"));
+                        // Assuming other properties in UserModel, adjust accordingly
+                        string username = reader.GetString(reader.GetOrdinal("USERNAME"));
+                        string password = reader.GetString(reader.GetOrdinal("PASSWORD"));
+                        string firstName = reader.GetString(reader.GetOrdinal("FIRSTNAME"));
+                        string lastName = reader.GetString(reader.GetOrdinal("LASTNAME"));
+                        int age = reader.GetInt32(reader.GetOrdinal("AGE"));
+                        string sex = reader.GetString(reader.GetOrdinal("SEX"));
+                        string state = reader.GetString(reader.GetOrdinal("STATE"));
+                        string email = reader.GetString(reader.GetOrdinal("EMAIL"));
+
+                        resultUser = new UserModel
+                        {
+                            Id = id,
+                            FirstName = firstName,
+                            LastName = lastName,
+                            Sex = sex,
+                            Age = age,
+                            State = state,
+                            Email = email,
+                            UserName = username,
+                            Password = password
+                        };
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return resultUser;
+        }
 
     }
 }

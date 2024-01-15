@@ -1,4 +1,4 @@
-﻿
+﻿@model Minesweeper.Models.UserModel
 @{
     ViewData["Title"] = "User Dashboard";
 
@@ -25,13 +25,15 @@
 
         @* Add Difficulty Setting (radio buttons) HERE! *@
 
-        <button class="btn btn-success game-start-button">PLAY</button>
-        <button class="btn btn-danger quit-game-btn">QUIT</button>
+        <button class="btn btn-success game-start-button">NEW GAME</button>
+        <button class="btn btn-primary game-saves-button">SAVED GAMES</button>
+        @* <button class="btn btn-danger quit-game-btn">QUIT</button> *@
     </div>
 </div>
 
 
 @* GameBoard goes here as partial view *@
 <div id="game">
+    @* @Html.Partial("_Minesweeper", new Minesweeper.Models.GameBoardModel()) *@
 
 </div>

@@ -57,7 +57,7 @@ namespace Minesweeper.Services
                     state += gameBoard.Grid[r, c].Flagged.ToString() + ",";
 
                     // do not add separator after last cell
-                    if (!(r < gameBoard.Size - 1 && c < gameBoard.Size - 1))
+                    if (!(r == gameBoard.Size - 1 && c == gameBoard.Size - 1))
                     {
                         state += "|";
                     }

@@ -21,6 +21,9 @@
             private set { }
         }
 
+
+
+
         //default constructor
         public GameBoardModel()
         {
@@ -45,6 +48,22 @@
                     Grid[row, col] = new CellModel();
                 }
             }
+        }
+
+
+
+        public object GetState()
+        {
+            return new
+            {
+                Size = Size,
+                BombRatio = BombRatio,
+                TotalCells = TotalCells,
+                LiveCells = LiveCells,
+                NonLiveCells = NonLiveCells,
+                FirstClick = FirstClick
+                // Add other properties as needed
+            };
         }
     }
 }

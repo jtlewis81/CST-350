@@ -25,6 +25,16 @@ namespace Minesweeper.Services
         }
 
 
+        // Method for getting the user id
+        public int GetUserId(UserModel user)
+        {
+            return securityDAO.GetUserId(user);
+        }
 
+        // Method for getting the returninf the user from the id
+        public UserModel GetUser(int userId)
+        {
+            return securityDAO.FindUserById(userId);
+        }
     }
 }

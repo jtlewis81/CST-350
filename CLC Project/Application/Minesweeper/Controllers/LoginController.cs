@@ -19,6 +19,7 @@ namespace Minesweeper.Controllers
 
         // login/processLogin view
         // handles where to send the user if login is succeessful or fails
+        [HttpPost]
         public IActionResult ProcessLogin(UserModel user)
         {
             SecurityService securityService = new SecurityService();
@@ -26,6 +27,9 @@ namespace Minesweeper.Controllers
             // successful login takes user to dashboard
             if (securityService.IsValid(user))
             {
+                user.Id = securityService.GetUserId(user);
+                HttpContext.Session.SetString("userId", user.Id.ToString());
+                UserModel foundUser = securityService.GetUser(user.Id);
                 return RedirectToAction("Index", "Dashboard", user);
             }
             // login failure reloads login/index with error message displayed

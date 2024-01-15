@@ -1,5 +1,5 @@
 ﻿$(function () {
-
+    
     // prevent righ-click context menu
     $(document).bind("contextmenu", function (e) {
         e.preventDefault();
@@ -22,10 +22,38 @@
     });
 
     // closes an open game
-    $(".quit-game-btn").click(function (event) {
+    //$(".quit-game-btn").click(function (event) {
+    //    console.log('Button clicked!');
+    //    event.preventDefault();
+    //    $('#game').empty();
+    //});
+    $(document).on("click", ".quit-game-btn", function (event) {
         event.preventDefault();
         $('#game').empty();
     });
+
+    // //saves the current game 
+    //$(document).on("click", ".save-game-btn", function (event) {
+    //    event.preventDefault();
+    //    console.log('Save button clicked');
+    //    // Collect game board data
+    //    var gameBoardData = collectGameBoardData();
+
+    //    // Your AJAX request to save the game
+    //    $.ajax({
+    //        datatype: 'json', // Change to 'json'
+    //        contentType: 'application/json', // Set content type to JSON
+    //        method: 'POST',
+    //        url: '/Game/SaveGame',
+    //        data: JSON.stringify(gameBoardData), // Convert the data to JSON string
+    //        success: function (data) {
+    //            console.log('Game Saved');
+    //            console.log(data);
+    //            // Handle the response as needed
+    //        }
+    //    });
+    //});
+
 
     // handle left/right/center mouse clicks
     $(document).on("mousedown", ".game-button", function (event) {
@@ -62,5 +90,34 @@
             }
         });
     };
+    function collectGameBoardData() {
+        var gameBoardData = {};
+
+        // Collect game board properties
+        gameBoardData.Size = $('#gameBoardSize').val();
+        gameBoardData.BombRatio = $('#gameBoardBombRatio').val();
+        gameBoardData.TotalCells = $('#gameBoardTotalCells').val();
+        gameBoardData.LiveCells = $('#gameBoardLiveCells').val();
+        gameBoardData.NonLiveCells = $('#gameBoardNonLiveCells').val();
+        gameBoardData.FirstClick = $('#gameBoardFirstClick').val();
+
+        // Collect grid data
+        gameBoardData.Grid = [];
+
+        $(".game-button").each(function () {
+            var cellRow = $(this).closest("form").find('input[name="row"]').val();
+            var cellCol = $(this).closest("form").find('input[name="col"]').val();
+
+            var cellData = {
+                Row: cellRow,
+                Column: cellCol,
+                // ... collect other cell properties based on your model ...
+            };
+
+            gameBoardData.Grid.push(cellData);
+        });
+
+        return gameBoardData;
+    }
     
 });

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Minesweeper.Models;
 using Minesweeper.Services;
+using Newtonsoft.Json;
+using System;
 
 namespace Minesweeper.Controllers
 {
@@ -73,5 +75,32 @@ namespace Minesweeper.Controllers
 
             return PartialView("_GameBoard", gameBoard);
         }
+
+
+        [HttpPost]
+        public IActionResult SaveGame( GameBoardModel gameBoard)
+        {
+            //GameBoardModel gameBoard = JsonConvert.DeserializeObject<GameBoardModel>(gameBoardData);
+            SecurityService securityService = new SecurityService();
+            SaveGameService saveGame = new SaveGameService();
+            int userId = Int32.Parse(HttpContext.Session.GetString("userId"));
+            //Console.WriteLine("Game Saved" + userId);
+            UserModel user = securityService.GetUser(userId);
+            saveGame.SaveGame(userId, gameBoard);
+
+            //return PartialView("_Minesweeper", gameBoard);
+            return RedirectToAction("Index", "Dashboard", user);
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 }

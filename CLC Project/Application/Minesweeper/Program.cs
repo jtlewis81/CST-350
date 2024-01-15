@@ -5,7 +5,9 @@ namespace Minesweeper
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            // session setup
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession();
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
@@ -23,7 +25,7 @@ namespace Minesweeper
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.MapControllerRoute(
