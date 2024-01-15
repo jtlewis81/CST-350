@@ -45,25 +45,13 @@
             {
                 for (int col = 0; col < size; col++)
                 {
-                    Grid[row, col] = new CellModel();
+                    Grid[row, col] = new CellModel(row, col);
                 }
             }
         }
 
 
 
-        public object GetState()
-        {
-            return new
-            {
-                Size = Size,
-                BombRatio = BombRatio,
-                TotalCells = TotalCells,
-                LiveCells = LiveCells,
-                NonLiveCells = NonLiveCells,
-                FirstClick = FirstClick
-                // Add other properties as needed
-            };
-        }
+
     }
 }

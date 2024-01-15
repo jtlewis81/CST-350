@@ -85,10 +85,9 @@ namespace Minesweeper.Controllers
             SecurityService securityService = new SecurityService();
             SaveGameService saveGame = new SaveGameService();
             int userId = Int32.Parse(HttpContext.Session.GetString("userId"));
-            //Console.WriteLine("Game Saved" + userId);
             UserModel user = securityService.GetUser(userId);
             saveGame.SaveGame(userId, gameBoard);
-
+            
             //return PartialView("_Minesweeper", gameBoard);
             return RedirectToAction("Index", "Dashboard", user);
         }
@@ -106,12 +105,7 @@ namespace Minesweeper.Controllers
         }
 
 
-        public IActionResult LoadGame()
-        {
 
-
-            return PartialView("_Minesweeper", gameBoard);
-        }
 
         [HttpDelete]
         public IActionResult DeleteGame(int gameId)
