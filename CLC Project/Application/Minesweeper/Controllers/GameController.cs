@@ -95,13 +95,46 @@ namespace Minesweeper.Controllers
 
 
 
+        // saved games button
+        public IActionResult SavedGames()
+        {
+            SaveGameService savedGameServices = new SaveGameService();
+            int userId = Int32.Parse(HttpContext.Session.GetString("userId"));
+            List<SaveGameModel> savedGames = savedGameServices.GetSavesByUserId(userId);
+
+            return PartialView("_SavedGames", savedGames);
+        }
 
 
+        public IActionResult LoadGame()
+        {
+            
+
+            return PartialView("_Minesweeper", gameBoard);
+        }
 
 
+        public IActionResult DeleteGame(int gameId)
+        {
+            SaveGameService savedGameServices = new SaveGameService();
+            savedGameServices.DeleteGame(gameId);
+            int userId = Int32.Parse(HttpContext.Session.GetString("userId"));
+            List<SaveGameModel> savedGames = savedGameServices.GetSavesByUserId(userId);
+
+            return PartialView("_SavedGames", savedGames);
+        }
+
+        public IActionResult LoadGame(int gameId)
+        {
+            Console.Out.WriteLine(gameId);
+            SaveGameService savedGameServices = new SaveGameService();
+            gameBoard = savedGameServices.LoadGame(gameId);
 
 
+            return PartialView("_Minesweeper", gameBoard);
 
+
+        }
 
     }
 }
