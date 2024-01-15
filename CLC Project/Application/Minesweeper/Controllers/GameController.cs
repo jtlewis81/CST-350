@@ -78,8 +78,9 @@ namespace Minesweeper.Controllers
 
 
         [HttpPost]
-        public IActionResult SaveGame( GameBoardModel gameBoard)
+        public IActionResult SaveGame()
         {
+            
             //GameBoardModel gameBoard = JsonConvert.DeserializeObject<GameBoardModel>(gameBoardData);
             SecurityService securityService = new SecurityService();
             SaveGameService saveGame = new SaveGameService();

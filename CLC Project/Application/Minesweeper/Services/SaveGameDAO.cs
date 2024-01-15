@@ -12,7 +12,7 @@ namespace Minesweeper.Services
         {
             bool success = false;
 
-            string sqlStatement = "INSERT INTO dbo.Saves (Id, userId, date, state) values (@Id, @UserId, @Date, @State)";
+            string sqlStatement = "INSERT INTO dbo.Saves (userId, date, state) values (@UserId, @Date, @State)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -20,8 +20,8 @@ namespace Minesweeper.Services
                 {
                     SqlCommand command = new SqlCommand(sqlStatement, connection);
 
-                    command.Parameters.AddWithValue("@ID", savedGame.Id);
-                    command.Parameters.AddWithValue("@USERNAME", savedGame.UserId);
+                   // command.Parameters.AddWithValue("@ID", savedGame.Id);
+                    command.Parameters.AddWithValue("@USERID", savedGame.UserId);
                     command.Parameters.AddWithValue("@DATE", savedGame.Date);
                     command.Parameters.AddWithValue("@STATE", savedGame.State);
 
