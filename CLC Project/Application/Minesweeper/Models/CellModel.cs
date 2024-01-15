@@ -12,7 +12,11 @@
 
         //Default constructor
         public CellModel() { }
-
+        public CellModel(int row, int column)
+        {
+            this.Row = row;
+            this.Column = column;
+        }
         // Contructor that set up all the values
         public CellModel(int row, int column, bool visited, bool live, int liveNeighbors)
         {
