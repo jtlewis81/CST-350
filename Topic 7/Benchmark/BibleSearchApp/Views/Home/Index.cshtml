@@ -13,6 +13,7 @@
         <div class="row">
 
             @* Search Form *@
+
             <div class="col-md-3">
                 <form asp-action="SearchResults">
                     <div class="form-group">
@@ -43,6 +44,7 @@
             </div>
 
             @* Search Results *@
+
             <div class="col-md-6">
                 @if (Model != null) @* Does not display if there are no search results *@
                 {
@@ -61,9 +63,7 @@
                             </div>
                         }
                     </div>
-                }
-
-                
+                }                
             </div>
 
         </div>

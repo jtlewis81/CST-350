@@ -4,7 +4,10 @@ namespace BibleSearchApp.Models
 {
     /// <summary>
     /// 
+    ///     Verse Model class
     ///     
+    ///     This model class is based on information provided by a database refereneced in class resources
+    ///     I added private helper methods to create the reference string
     /// 
     /// </summary>
 
