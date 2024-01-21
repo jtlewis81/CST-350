@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibleSearchApp", "BibleSearchApp.csproj", "{8F67E477-C4E6-43D4-833E-84937021BEBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F67E477-C4E6-43D4-833E-84937021BEBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F67E477-C4E6-43D4-833E-84937021BEBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F67E477-C4E6-43D4-833E-84937021BEBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F67E477-C4E6-43D4-833E-84937021BEBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DF238C8-94D3-4367-A4FD-2899A0B83DD7}
+	EndGlobalSection
+EndGlobal

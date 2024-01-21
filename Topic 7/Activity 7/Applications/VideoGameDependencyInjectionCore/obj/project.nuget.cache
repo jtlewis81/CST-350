@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "kCqAhDmuHdmoE555atYTwSG9wMF3NqU1YpuwNXJmQqyCsvzvmXAwHPVqXvDXZixl3JWvWXHFtD4+JUuG7aEeyA==",
+  "success": true,
+  "projectFilePath": "E:\\GitHub\\CST-350\\Topic 7\\Activity 7\\Applications\\VideoGameDependencyInjectionCore\\VideoGameDependencyInjectionCore.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jtlew\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\jtlew\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

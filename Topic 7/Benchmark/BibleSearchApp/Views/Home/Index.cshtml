@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BibleSearchApp.Models.VerseModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*
+    Main View return by the HomeController 
+*@
+
+<div>
+    <div class="container">
+        <div class="row">
+
+            @* Search Form *@
+            <div class="col-md-3">
+                <form asp-action="SearchResults">
+                    <div class="form-group">
+                        <label class="control-label">Search where:</label><br/>
+                        <input type="radio" id="bible" name="option" value="0" checked>
+                        <label for="bible">Whole Bible</label><br>
+                        <input type="radio" id="ot" name="option" value="1">
+                        <label for="ot">Old Testament</label><br>
+                        <input type="radio" id="nt" name="option" value="2">
+                        <label for="nt">New Testament</label><br>
+                    <br />
+                        <label class="control-label">Search for:</label>
+                        <input name="term" class="form-control" placeholder="@ViewBag.Message"/>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" />
+                        <button asp-action="Index" asp-controller="Home" class="btn btn-danger">Clear</button>
+                    </div>
+                </form>
+                <br />
+                @if (ViewBag.Error != null)
+                {
+                    <p class="error">@ViewBag.Error</p>
+                }
+                <p class="info">Please allow a few seconds for results when searching words or phrases of less than 3 characters.</p>
+                
+            </div>
+
+            @* Search Results *@
+            <div class="col-md-6">
+                @if (Model != null) @* Does not display if there are no search results *@
+                {
+                    <h5># of Results: @ViewBag.Count</h5> @* Show how many results there are *@
+
+                    <div class="scroll-box">
+                        @foreach (var item in Model)
+                        {
+                            <div class="row list-item">
+                                <div class="col-md-3">
+                                    @Html.DisplayFor(modelItem => item.Reference)
+                                </div>
+                                <div class="col-md-9">
+                                    @Html.DisplayFor(modelItem => item.Text)
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+
+                
+            </div>
+
+        </div>
+    </div>
+</div>
