@@ -83,6 +83,7 @@
             success: function (data) {
                 console.log('Game loaded successfully.');
                 $('#game').html(data);
+                doCellUpdate(-1, -1, "/game/HandleLeftClick");
             },
             error: function (error) {
                 console.error('Error loading game:', error);

@@ -14,22 +14,31 @@ namespace Minesweeper.Controllers
 
     public class GameController : Controller
     {
-
         static GameBoardModel gameBoard;
-        GameLogicService gameLogic = new GameLogicService();
 
-        // hard coded for now but will be determined by the difficulty chosen
+        GameLogicService gameLogicService;
+        SecurityService securityService;
+        SaveGameService saveGameService;
+        IEncoder encoder;
+
+        public GameController(IEncoder encoderService)
+        {
+            encoder = encoderService;
+            gameLogicService = new GameLogicService();
+            securityService = new SecurityService();
+            saveGameService = new SaveGameService(encoder);
+        }
+        
+        // default game settings
         int gameBoardSize = 8;
-        // the GameboardModel class has an array of doubles called Difficulty,
-        // so we only need to pass an int once we implement the game settings feature
         double bombRatio = 0.10;
 
         // GET /Game/
         public IActionResult Index()
         {
             gameBoard = new GameBoardModel(gameBoardSize, bombRatio);
-            gameBoard = gameLogic.Setup(gameBoard);
-            // add method to the GameLogicService to start the timer (it might need to run in a separate partial view?)
+            gameBoard = gameLogicService.Setup(gameBoard);
+            
             return PartialView("_Minesweeper", gameBoard);
         }
 
@@ -46,13 +55,19 @@ namespace Minesweeper.Controllers
 
         public IActionResult HandleLeftClick(int row, int col)
         {
-            gameBoard = gameLogic.LeftClick(gameBoard, row, col);
+            // checks for a "fake click" for refreshing board when loading a game
+            // there is a method in site.js that calls this controller action,
+            //   passing -1 for row and col
+            if(row >= 0 && col >= 0)
+            {
+                gameBoard = gameLogicService.LeftClick(gameBoard, row, col);
+            }
 
-            if (gameLogic.GameOverWin(gameBoard))
+            if (gameLogicService.GameOverWin(gameBoard))
             {
                 ViewBag.Message = "GAME OVER! You WIN! All non-live cells visited.\nQUIT to close the game or PLAY start a new game.";
             }
-            else if (gameLogic.GameOverLose(gameBoard))
+            else if (gameLogicService.GameOverLose(gameBoard))
             {
                 ViewBag.Message = "GAME OVER! You LOSE! You visited a live cell.\nQUIT to close the game or PLAY start a new game.";
             }
@@ -62,13 +77,13 @@ namespace Minesweeper.Controllers
 
         public IActionResult HandleRightClick(int row, int col)
         {
-            gameBoard = gameLogic.RightClick(gameBoard, row, col);
+            gameBoard = gameLogicService.RightClick(gameBoard, row, col);
 
-            if (gameLogic.GameOverWin(gameBoard))
+            if (gameLogicService.GameOverWin(gameBoard))
             {
                 ViewBag.Message = "GAME OVER! You WIN! All non-live cells visited.\nQUIT to close the game or PLAY start a new game.";
             }
-            else if (gameLogic.GameOverLose(gameBoard))
+            else if (gameLogicService.GameOverLose(gameBoard))
             {
                 ViewBag.Message = "GAME OVER! You LOSE! You visited a live cell.\nQUIT to close the game or PLAY start a new game.";
             }
@@ -76,59 +91,44 @@ namespace Minesweeper.Controllers
             return PartialView("_GameBoard", gameBoard);
         }
 
+        // saved games button
+        public IActionResult SavedGames()
+        {
+            int userId = Int32.Parse(HttpContext.Session.GetString("userId"));
+            List<SaveGameModel> savedGames = saveGameService.GetSavesByUserId(userId);
+
+            return PartialView("_SavedGames", savedGames);
+        }
 
         [HttpPost]
         public IActionResult SaveGame()
         {
-
-            //GameBoardModel gameBoard = JsonConvert.DeserializeObject<GameBoardModel>(gameBoardData);
-            SecurityService securityService = new SecurityService();
-            SaveGameService saveGame = new SaveGameService();
             int userId = Int32.Parse(HttpContext.Session.GetString("userId"));
             UserModel user = securityService.GetUser(userId);
-            saveGame.SaveGame(userId, gameBoard);
+            saveGameService.SaveGame(userId, gameBoard);
             
             //return PartialView("_Minesweeper", gameBoard);
             return RedirectToAction("Index", "Dashboard", user);
         }
 
-
-
-        // saved games button
-        public IActionResult SavedGames()
-        {
-            SaveGameService savedGameServices = new SaveGameService();
-            int userId = Int32.Parse(HttpContext.Session.GetString("userId"));
-            List<SaveGameModel> savedGames = savedGameServices.GetSavesByUserId(userId);
-
-            return PartialView("_SavedGames", savedGames);
-        }
-
-
-
-
-        [HttpDelete]
-        public IActionResult DeleteGame(int gameId)
-        {
-            SaveGameService savedGameServices = new SaveGameService();
-            savedGameServices.DeleteGame(gameId);
-            int userId = Int32.Parse(HttpContext.Session.GetString("userId"));
-            List<SaveGameModel> savedGames = savedGameServices.GetSavesByUserId(userId);
-
-            return PartialView("_SavedGames", savedGames);
-        }
         [HttpGet]
         public IActionResult LoadGame(int gameId)
         {
             Console.Out.WriteLine(gameId);
-            SaveGameService savedGameServices = new SaveGameService();
-            gameBoard = savedGameServices.LoadGame(gameId);
+            gameBoard = saveGameService.LoadGame(gameId);
 
 
             return PartialView("_Minesweeper", gameBoard);
-
-
         }
 
+        [HttpDelete]
+        public IActionResult DeleteGame(int gameId)
+        {
+            saveGameService.DeleteGame(gameId);
+            int userId = Int32.Parse(HttpContext.Session.GetString("userId"));
+            List<SaveGameModel> savedGames = saveGameService.GetSavesByUserId(userId);
+
+            return PartialView("_SavedGames", savedGames);
+        }
     }
 }

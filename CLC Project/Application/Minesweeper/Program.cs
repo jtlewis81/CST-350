@@ -1,3 +1,5 @@
+using Minesweeper.Services;
+
 namespace Minesweeper
 {
     public class Program
@@ -5,9 +7,13 @@ namespace Minesweeper
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddTransient<IEncoder, JsonGameStateEncoderService>();
+
             // session setup
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession();
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
