@@ -1,0 +1,15 @@
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\bin\Debug\net8.0\LINQdemo.exe
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\bin\Debug\net8.0\LINQdemo.deps.json
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\bin\Debug\net8.0\LINQdemo.runtimeconfig.json
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\bin\Debug\net8.0\LINQdemo.dll
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\bin\Debug\net8.0\LINQdemo.pdb
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\obj\Debug\net8.0\LINQdemo.GeneratedMSBuildEditorConfig.editorconfig
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\obj\Debug\net8.0\LINQdemo.AssemblyInfoInputs.cache
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\obj\Debug\net8.0\LINQdemo.AssemblyInfo.cs
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\obj\Debug\net8.0\LINQdemo.csproj.CoreCompileInputs.cache
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\obj\Debug\net8.0\LINQdemo.sourcelink.json
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\obj\Debug\net8.0\LINQdemo.dll
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\obj\Debug\net8.0\refint\LINQdemo.dll
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\obj\Debug\net8.0\LINQdemo.pdb
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\obj\Debug\net8.0\LINQdemo.genruntimeconfig.cache
+E:\GitHub\CST-350\Topic 8\Activity 8\Applications\LINQdemo\obj\Debug\net8.0\ref\LINQdemo.dll
