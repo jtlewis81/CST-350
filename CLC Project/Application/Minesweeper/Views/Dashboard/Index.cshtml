@@ -13,26 +13,31 @@
     <h4>DASHBOARD</h4>
 </div>
 
-@*
-    Cards can be used to expand on the project, allowing the user to launch any number of games on the dashboard.
-    The id can be handled dynamically, allowing for a specific game to be loaded.
-*@
-<div id="gameCard1" class="card">
-        
-    <div class="card-body">
-        <h5 class="card-title">Play Minesweeper</h5>
-        <img src="~/img/@bombImage" class="card-img-top" alt-text="minesweeper"/>
 
-        @* Add Difficulty Setting (radio buttons) HERE! *@
+<div class="row">
+    <div class="col-md-4">
+        @*
+        Cards can be used to expand on the project, allowing the user to launch any number of games on the dashboard.
+        The id can be handled dynamically, allowing for a specific game to be loaded.
+        *@
+        <div id="gameCard1" class="card">
 
-        <button class="btn btn-success game-start-button">NEW GAME</button>
-        <button class="btn btn-primary game-saves-button">SAVED GAMES</button>
-        @* <button class="btn btn-danger quit-game-btn">QUIT</button> *@
+            <div class="card-body">
+                <h5 class="card-title">Play Minesweeper</h5>
+                <img src="~/img/@bombImage" class="card-img-top" alt-text="minesweeper" />
+
+                <button class="btn btn-success game-start-button">NEW GAME</button>
+                <button class="btn btn-primary game-saves-button">SAVED GAMES</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        @* GameBoard goes here as partial view *@
+        <div id="game">
+            @* @Html.Partial("_Minesweeper", new Minesweeper.Models.GameBoardModel()) *@
+        </div>
     </div>
 </div>
 
 
-@* GameBoard goes here as partial view *@
-<div id="game">
-    @* @Html.Partial("_Minesweeper", new Minesweeper.Models.GameBoardModel()) *@
-</div>
+

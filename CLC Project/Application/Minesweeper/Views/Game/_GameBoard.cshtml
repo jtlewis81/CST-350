@@ -10,11 +10,6 @@
     string flagImage = "Flag.png";
 }
 
-@* Game Message goes here *@
-<div id="message">
-    <p>@ViewBag.Message</p>
-</div>
-
 @* create the rows and columns to use for the gameboard *@
 @for (int row = 0; row < @Model.Size; row++)
 {
@@ -37,7 +32,7 @@
 
                 @* Label for the buttons when they have been click the live neightbors will show. *@
                 <div class="button-label">
-                    @if (Model.Grid[row, col].Visited && Model.Grid[row, col].LiveNeighbors > 0)
+                    @if (Model.Grid[row, col].Visited && Model.Grid[row, col].LiveNeighbors > 0 && Model.Grid[row, col].LiveNeighbors < 9)
                     {
                         @Model.Grid[row, col].LiveNeighbors
                     }
@@ -46,3 +41,8 @@
         </form>
     }
 }
+
+@* Game Message goes here *@
+<div id="message">
+    <p>@ViewBag.Message</p>
+</div>

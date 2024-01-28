@@ -12,7 +12,7 @@ namespace Minesweeper.Services
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public bool FindUserByUsernameAndPassword(UserModel user)
+        public bool UsernameAndPasswordIsValid(UserModel user)
         {
             bool success = false;
 
@@ -118,8 +118,8 @@ namespace Minesweeper.Services
            
         }
 
-
-        public int GetUserId(UserModel user)
+        // returns a user's Id based on their username and password
+        public int GetUserIdUsingUsernameAndPassword(UserModel user)
         {
             int userId = -1;
 
@@ -154,6 +154,7 @@ namespace Minesweeper.Services
             return userId;
         }
 
+        // returns a complete UserModel based on a user's Id
         public UserModel FindUserById(int userId)
         {
             UserModel resultUser = null;

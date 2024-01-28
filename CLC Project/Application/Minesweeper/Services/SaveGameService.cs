@@ -33,7 +33,7 @@ namespace Minesweeper.Services
             return gamestate != null ? encoder.DecodeGameState(gamestate) : null;
         }
 
-        // Helper Methods
+        // delete a game by its Id
 
         public bool DeleteGame(int saveGameId)
         {

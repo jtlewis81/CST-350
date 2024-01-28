@@ -21,9 +21,6 @@
             private set { }
         }
 
-
-
-
         //default constructor
         public GameBoardModel()
         {
@@ -49,9 +46,5 @@
                 }
             }
         }
-
-
-
-
     }
 }

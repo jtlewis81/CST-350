@@ -9,7 +9,7 @@ namespace Minesweeper.Services
         // Method for validating a user trying to login
         public bool IsValid(UserModel user)
         {
-            return securityDAO.FindUserByUsernameAndPassword(user);
+            return securityDAO.UsernameAndPasswordIsValid(user);
         }
 
         // Method for finding if the user already exists
@@ -28,7 +28,7 @@ namespace Minesweeper.Services
         // Method for getting the user id
         public int GetUserId(UserModel user)
         {
-            return securityDAO.GetUserId(user);
+            return securityDAO.GetUserIdUsingUsernameAndPassword(user);
         }
 
         // Method for getting the returninf the user from the id

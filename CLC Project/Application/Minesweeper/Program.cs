@@ -8,6 +8,7 @@ namespace Minesweeper
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // map the IEncoder interface to one of the available service classes which implements it
             builder.Services.AddTransient<IEncoder, JsonGameStateEncoderService>();
 
             // session setup

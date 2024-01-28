@@ -5,6 +5,18 @@ using System.Web.Http.Description;
 
 namespace Minesweeper.Controllers
 {
+    /// <summary>
+    /// 
+    ///     SavedGameAPIController
+    ///     
+    ///     This allows retrieval of saved games form the database
+    ///     It is unsecured, but does not return user Ids with game data
+    ///     It is just for getting game states with the date when they were saved
+    ///     A single game can be retrieved by the saved game's Id, no a user Id
+    ///     A single game can be deleted by the saved game's Id
+    /// 
+    /// </summary>
+
     [ApiController]
     [Route("/api/[Controller]")]
     public class SavedGameAPIController

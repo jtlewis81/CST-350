@@ -18,7 +18,7 @@ namespace Minesweeper.Controllers
         }
 
         // login/processLogin view
-        // handles where to send the user if login is succeessful or fails
+        // handles where to send the user if login is successful or fails
         [HttpPost]
         public IActionResult ProcessLogin(UserModel user)
         {

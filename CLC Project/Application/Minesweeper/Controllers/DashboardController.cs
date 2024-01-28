@@ -20,7 +20,7 @@ namespace Minesweeper.Controllers
 
             if (securityService.IsValid(user))
             {
-                //user.Id = securityService.GetUserId(user);
+                //user.Id = securityService.GetUserIdUsingUsernameAndPassword(user);
                 //HttpContext.Session.SetString("userId", user.Id.ToString());
                 //UserModel foundUser = securityService.GetUser(user.Id);
                 return View(user);

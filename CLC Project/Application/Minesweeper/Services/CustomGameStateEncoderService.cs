@@ -2,6 +2,15 @@
 
 namespace Minesweeper.Services
 {
+    /// <summary>
+    /// 
+    ///     CustomGameStateEncoderService
+    ///     
+    ///     Implements the IEncoder interface
+    ///     
+    ///     Converts the game state to/from a custom string
+    /// 
+    /// </summary>
     public class CustomGameStateEncoderService : IEncoder
     {
         public GameBoardModel DecodeGameState(string gameState)
@@ -41,7 +50,8 @@ namespace Minesweeper.Services
                     gameBoard.Grid[r, c].LiveNeighbors = int.Parse(cellDetails[4]);
                     gameBoard.Grid[r, c].Flagged = bool.Parse(cellDetails[5]);
 
-                    // increment through gameDetails unless this is the last index, which will also be the last cell in gameBoard.Grid
+                    // increment through gameDetails unless this is the last index,
+                    // which will also be the last cell in gameBoard.Grid
                     if (gameDetailsIndex < gameDetails.Length - 1)
                     {
                         gameDetailsIndex++;

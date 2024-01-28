@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Minesweeper.Models;
 using Minesweeper.Services;
-using Newtonsoft.Json;
-using System;
 
 namespace Minesweeper.Controllers
 {
@@ -57,7 +55,10 @@ namespace Minesweeper.Controllers
         {
             // checks for a "fake click" for refreshing board when loading a game
             // there is a method in site.js that calls this controller action,
-            //   passing -1 for row and col
+            //   passing -1 for row and col, which generates this fake click to update the board
+            //   when a saved game is loaded
+            // this fixes the issue where a loading a game returns a gameboard that looks like a new one
+            //   but reveals the loaded state only after a click event
             if(row >= 0 && col >= 0)
             {
                 gameBoard = gameLogicService.LeftClick(gameBoard, row, col);
@@ -91,7 +92,8 @@ namespace Minesweeper.Controllers
             return PartialView("_GameBoard", gameBoard);
         }
 
-        // saved games button
+        // saved games button - opens a div with a list of saved games
+        // which are retrieved from the database according to user's Id
         public IActionResult SavedGames()
         {
             int userId = Int32.Parse(HttpContext.Session.GetString("userId"));
@@ -100,6 +102,12 @@ namespace Minesweeper.Controllers
             return PartialView("_SavedGames", savedGames);
         }
 
+        /// <summary>
+        /// 
+        ///     Actions for handling the save, load, and delete game buttons
+        /// 
+        /// </summary>
+
         [HttpPost]
         public IActionResult SaveGame()
         {
@@ -107,7 +115,6 @@ namespace Minesweeper.Controllers
             UserModel user = securityService.GetUser(userId);
             saveGameService.SaveGame(userId, gameBoard);
             
-            //return PartialView("_Minesweeper", gameBoard);
             return RedirectToAction("Index", "Dashboard", user);
         }
 
@@ -116,7 +123,6 @@ namespace Minesweeper.Controllers
         {
             Console.Out.WriteLine(gameId);
             gameBoard = saveGameService.LoadGame(gameId);
-
 
             return PartialView("_Minesweeper", gameBoard);
         }
