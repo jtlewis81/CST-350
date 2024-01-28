@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Minesweeper.Models;
-using Minesweeper.Services;
 /*
  * CST-350
  * Dashboard Controller
@@ -15,19 +14,8 @@ namespace Minesweeper.Controllers
         //[HttpPost]
         public IActionResult Index(UserModel user)
         {
-            
-            SecurityService securityService = new SecurityService();
-
-            if (securityService.IsValid(user))
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("userId")))
             {
-<<<<<<< Updated upstream
-                //user.Id = securityService.GetUserIdUsingUsernameAndPassword(user);
-                //HttpContext.Session.SetString("userId", user.Id.ToString());
-=======
-                //user.Id = securityService.GetUserId(user);
-                HttpContext.Session.SetString("userId", user.Id.ToString());
->>>>>>> Stashed changes
-                //UserModel foundUser = securityService.GetUser(user.Id);
                 return View(user);
             }
             else
@@ -36,5 +24,14 @@ namespace Minesweeper.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
+        // handle logout
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

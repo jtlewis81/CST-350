@@ -21,12 +21,7 @@
         });
     });
 
-    // closes an open game
-    //$(".quit-game-btn").click(function (event) {
-    //    console.log('Button clicked!');
-    //    event.preventDefault();
-    //    $('#game').empty();
-    //});
+    // quit game button
     $(document).on("click", ".quit-game-btn", function (event) {
         event.preventDefault();
         $('#game').empty();
@@ -49,7 +44,6 @@
     });
 
     // delete game button
-
     $(document).on("click", ".game-delete-button", function (event) {
         event.preventDefault();
         var id = $(this).data("game-id");
@@ -70,7 +64,6 @@
     });
 
     // Load game button
-
     $(document).on("click", ".game-load-button", function (event) {
         event.preventDefault();
         var id = $(this).data("game-id");

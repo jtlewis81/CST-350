@@ -37,7 +37,7 @@ namespace Minesweeper.Controllers
             gameBoard = new GameBoardModel(gameBoardSize, bombRatio);
             gameBoard = gameLogicService.Setup(gameBoard);
 
-            if (HttpContext.Session.GetString("userId") != null)
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("userId")))
             {
                 return PartialView("_Minesweeper", gameBoard);
             }
