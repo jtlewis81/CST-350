@@ -1,0 +1,48 @@
+﻿@model Minesweeper.Models.GameBoardModel
+
+@*
+    This partial view handles updates to the current minesweeper game board.
+*@
+
+@{
+    // store images in variables for more efficient code
+    string bombImage = "Bomb.png";
+    string flagImage = "Flag.png";
+}
+
+@* create the rows and columns to use for the gameboard *@
+@for (int row = 0; row < @Model.Size; row++)
+{
+    for (int col = 0; col < @Model.Size; col++)
+    {
+        <form method="post" asp-controller="Game" asp-action="HandleClick">
+            <input type="hidden" name="row" value="@row" />
+            <input type="hidden" name="col" value="@col" />
+            @* if the button has been clicked active will be false so this will change the button look *@
+            <button class="game-button @(Model.Grid[row, col].Visited ? "inactive" : "")" type="submit">
+                @* If the player clicked a bomb this all live cells will shows as bombs *@
+                @if (Model.Grid[row, col].Live && Model.Grid[row, col].Visited)
+                {
+                    <img class="game-button-image" src="~/img/@bombImage" alt="Bomb Image" />
+                }
+                @if (Model.Grid[row, col].Flagged && !Model.Grid[row, col].Visited)
+                {
+                    <img class="game-button-image" src="~/img/@flagImage" alt="Flag Image" />
+                }
+
+                @* Label for the buttons when they have been click the live neightbors will show. *@
+                <div class="button-label">
+                    @if (Model.Grid[row, col].Visited && Model.Grid[row, col].LiveNeighbors > 0 && Model.Grid[row, col].LiveNeighbors < 9)
+                    {
+                        @Model.Grid[row, col].LiveNeighbors
+                    }
+                </div>
+            </button>
+        </form>
+    }
+}
+
+@* Game Message goes here *@
+<div id="message">
+    <p>@ViewBag.Message</p>
+</div>
