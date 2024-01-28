@@ -20,8 +20,13 @@ namespace Minesweeper.Controllers
 
             if (securityService.IsValid(user))
             {
+<<<<<<< Updated upstream
                 //user.Id = securityService.GetUserIdUsingUsernameAndPassword(user);
                 //HttpContext.Session.SetString("userId", user.Id.ToString());
+=======
+                //user.Id = securityService.GetUserId(user);
+                HttpContext.Session.SetString("userId", user.Id.ToString());
+>>>>>>> Stashed changes
                 //UserModel foundUser = securityService.GetUser(user.Id);
                 return View(user);
             }

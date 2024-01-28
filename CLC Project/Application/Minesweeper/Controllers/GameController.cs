@@ -36,8 +36,15 @@ namespace Minesweeper.Controllers
         {
             gameBoard = new GameBoardModel(gameBoardSize, bombRatio);
             gameBoard = gameLogicService.Setup(gameBoard);
-            
-            return PartialView("_Minesweeper", gameBoard);
+
+            if (HttpContext.Session.GetString("userId") != null)
+            {
+                return PartialView("_Minesweeper", gameBoard);
+            }
+            else 
+            {
+				return RedirectToAction("Index", "Home");
+			}
         }
 
         /// <summary>
@@ -72,7 +79,7 @@ namespace Minesweeper.Controllers
             {
                 ViewBag.Message = "GAME OVER! You LOSE! You visited a live cell.\nQUIT to close the game or PLAY start a new game.";
             }
-
+            
             return PartialView("_GameBoard", gameBoard);
         }
 
